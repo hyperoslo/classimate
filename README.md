@@ -19,7 +19,7 @@ $(target).classimate(
 		[  											// Frames array
 			"class1",								// Array content can be just a string if you have no frame-specific settings					  
 			{										// Or a object if you also want other frame-specific settings than just the cssClass
-				cssClass:"class2",				// Class must be supplied with name of the frame class		
+				cssClass:"class2",					// Class must be supplied with name of the frame class		
 				duration: 1000,						// Duration in ms for this frame
 				action: function(object){}			// Function to run on this frame
 			}

@@ -56,13 +56,13 @@ $(target).('preset','presetname',settings) 					// Trigger a preset for a target
 	var settings = {
 			fps: 30	 // Frame rate of animation. Can be changed by setting $().classimate('fps',24);
 	}
-	var interval;
-	var init = false;
-	var classimated = [];
-	var presets = {};	
+	var interval; // Var used for the setInterval changing all frames
+	var init = false; 
+	var classimated = []; // Array containing all objects to classimate
+	var presets = {}; // Classimation presets
 	
 	var methods = {		
-		setAnimation : function($frames,$settings) {
+		setAnimation : function($frames,$settings) {  // Set an animation, or just delete it if no arguments
 			return this.each(function(){
 				$this = $(this);				
 				deleteAnimation($this);	
@@ -87,7 +87,7 @@ $(target).('preset','presetname',settings) 					// Trigger a preset for a target
 			});
 		},
 		
-		preset : function($name,$settings){
+		preset : function($name,$settings){ // Run preset
 			if(presets[$name]) {
 				if(!$settings) $settings = {};
 				var p = [];
@@ -102,20 +102,20 @@ $(target).('preset','presetname',settings) 					// Trigger a preset for a target
 			}
 		},
 		
-		addPreset : function($name,$frames,$settings){
+		addPreset : function($name,$frames,$settings){ // Create new preset
 			presets[$name] = [$frames,$settings];
 		},
 
-		pause : function() {
+		pause : function() { // Pause all animations
 			pause();
 		},
 		
-		start : function() {
+		start : function() {  // Restart all animations
 			play();
 			return this;
 		},
 		
-		fps : function(fps) {
+		fps : function(fps) {  // Change animation FPS
 			if(fps) {
 				pause();
 				settings.fps = fps;
@@ -129,8 +129,8 @@ $(target).('preset','presetname',settings) 					// Trigger a preset for a target
 		
 	 }
 
-	$.fn.classimate = function(method) {  
-		if(!init) initClassimate();
+	$.fn.classimate = function(method) {  // Create plugin
+		if(!init) initClassimate(); // Init of not already
 
 		if (methods[method]) {
 			return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
@@ -142,7 +142,7 @@ $(target).('preset','presetname',settings) 					// Trigger a preset for a target
 		}  
 	};
 
-	var initClassimate = function( options ) {			
+	var initClassimate = function( options ) {	// Actions on init	
 		init = true;
 		play();				                  
      }
@@ -154,7 +154,7 @@ $(target).('preset','presetname',settings) 					// Trigger a preset for a target
 		}
 	}	
 	
-	var setFrame = function(o) {
+	var setFrame = function(o) {	// Check if to change frame of animation
 			if(!o || !o.data() || !o.data('classimate')) return;
 			var d = o.data('classimate');
 			var a = d.animation;
@@ -168,7 +168,7 @@ $(target).('preset','presetname',settings) 					// Trigger a preset for a target
 			}
 			
 
-			if(a.currentFrame>=a.frames.length) {
+			if(a.currentFrame>=a.frames.length) {  // Should animation loop or end?
 				if(a.loop && (!a.rounds || a.hasRounds<a.rounds)) {
 					if(a.rounds) a.hasRounds++;
 					a.currentFrame = 0;
@@ -180,7 +180,7 @@ $(target).('preset','presetname',settings) 					// Trigger a preset for a target
 			}
 			
 			
-			if(!a.lastTime || new Date().getTime()>a.lastTime+a.currentDuration) {
+			if(!a.lastTime || new Date().getTime()>a.lastTime+a.currentDuration) {  // Time for a new frame?
 				if(a.ended) {
 					deleteAnimation(o,a.hold);			
 					if(a.complete) a.complete(o);					
@@ -208,7 +208,7 @@ $(target).('preset','presetname',settings) 					// Trigger a preset for a target
 
 	}
 	
-	var deleteAnimation = function(o,hold) {
+	var deleteAnimation = function(o,hold) {  // Delete animtaion for object
 		var d = o.data("classimate");
 		if(d && d.animation) {	
 			for(x in classimated) if($(classimated[x]).is(o)) classimated = classimated.splice(x,0);
@@ -217,11 +217,11 @@ $(target).('preset','presetname',settings) 					// Trigger a preset for a target
 		}		
 	}
 	
-	var pause = function() {
+	var pause = function() {	// Pause all animations
 		if(interval) clearInterval(interval);
 	}
 	
-	var play = function(fps) {
+	var play = function(fps) {		// Start all animations
 		if(fps) settings.fps = fps;
 		var i = 1000/settings.fps;
 		interval = setInterval(frame,i);
