@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+		<script src="./classimate.jquery.js" type="text/javascript"></script>
+		
+		<script type="text/javascript">
+		$(window).ready(function(){		
+		
+			$("#blinknormal").click(function(){
+				// Loop through the three frames for ever, with the default duration of 1000ms
+				$(".animated").classimate(["blue","green","yellow"])
+			});
+			
+			$("#blinkfast").click(function(){ 
+				// Loop through the three frames, stopping after 10 loops, with custom duration of 20 for every frame
+				$(".animated").classimate(["blue","green","yellow"],{duration:20, rounds:10});
+			});			
+
+			// Example for making a animation preset for using the same animation multiple times. 
+			// This loops through the frames, and the 'green' frame has a custom duraton of 100ms while the others have 1000ms
+			$().classimate('addPreset','greenfast',["blue",{class:"green",duration:100},"yellow"]);
+			
+			$("#greenfast").click(function(){
+				$(".animated").classimate('preset','greenfast'); // Call the preset stated above
+			});
+			
+			$("#stop").click(function(){ 
+				$(".animated").classimate(); 
+			});			
+		});
+		</script>
+		
+		<style>
+			.animated {
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+			.blue {
+				background: blue;
+			}
+
+			.green {
+				background: green;
+			}
+			
+			.yellow {
+				background: yellow;
+			}		
+		</style>
+
+
+	</head>
+	<body>
+	<h1>Classimate simple demo</h1>
+		<div class='animated'></div>
+		<ul>
+		<li><a id='blinknormal' href="#">Blink</a></li>
+		<li><a id='blinkfast' href="#">Blink fast</a></li>
+		<li><a id='greenfast' href="#">Blink green fast</a></li>
+		<li><a id='stop' href='#'>Stop</a></li>
+		</ul>
+	</body>
+</html>	
