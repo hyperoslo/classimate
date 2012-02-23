@@ -34,10 +34,11 @@ $(target).classimate(
 		complete: function(object){}, 				// Function to run when animation is completed
 		onLoop: function(object){}, 				// Function to run when animation is looped
 		frame: function(object,frameNumber){} 		// Function to run when changing frame in animation				
-});
+});</pre>
 
-// You can also save animation presets for multiple use:
 
+You can also save animation presets for multiple use:
+<pre>
 $().classimate('addPreset','presetname', frames, settings); // Supply any name for your preset. 
 															// Frames array and settings objects are the same as example above
 																		
