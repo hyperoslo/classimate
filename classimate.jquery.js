@@ -42,6 +42,14 @@ $(target).classimate(
 		frame: function(object,frameNumber){} 		// Function to run when changing frame in animation				
 });
 
+// You can also save animation presets for multiple use:
+
+$().classimate('addPreset','presetname', frames, settings); // Supply any name for your preset. 
+															// Frames array and settings objects are the same as example above
+																		
+$(target).('preset','presetname',settings) 					// Trigger a preset for a target. You may optionally override the animation settings 
+
+
 */
 
 (function( $ ){
