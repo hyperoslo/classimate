@@ -16,16 +16,16 @@
 $().classimate('pause'); 							// Pauses all animations
 $().classimate('play'); 							// Pauses all animations
 $().classimate('fps',25); 							// Overrides default FPS (30)
-$(target).classimate(['classname','classname']);	// Animates classes
+$(target).classimate(['cssClass','cssClass']);	// Animates classes
 
 *
 * With settings:
 
 $(target).classimate(
 		[  											// Frames array
-			"classname",							// Array content can be just a string if you have no frame-specific settings					  
-			{										// Or a object if you also want other frame-specific settings than just the classname
-				class:"classname",					// Class must be supplied with name of the frame class		
+			"cssClass",							// Array content can be just a string if you have no frame-specific settings					  
+			{										// Or a object if you also want other frame-specific settings than just the cssClass
+				cssClass:"cssClass",				// Class must be supplied with name of the frame class		
 				duration: 1000,						// Duration in ms for this frame
 				action: function(object){}			// Function to run on this frame
 			}
@@ -177,15 +177,15 @@ $(target).classimate(
 					deleteAnimation(o,a.hold);			
 					if(a.complete) a.complete(o);					
 				} else {
-					if(typeof a.frames[a.currentFrame] === "string") a.frames[a.currentFrame] = {class:a.frames[a.currentFrame]}
+					if(typeof a.frames[a.currentFrame] === "string") a.frames[a.currentFrame] = {cssClass:a.frames[a.currentFrame]}
 										
-					if(!a.frames[a.currentFrame].class) {
+					if(!a.frames[a.currentFrame].cssClass) {
 						pause();
 						$.error( 'Stopping: No class set for frame ' +  a.currentFrame + ' in Classimate' );
 					} else {
 						a.lastTime = new Date().getTime();
 						if(a.lastClass) o.removeClass(a.lastClass);
-						a.lastClass = a.frames[a.currentFrame].class;
+						a.lastClass = a.frames[a.currentFrame].cssClass;
 						o.addClass(a.lastClass);	
 						a.currentDuration = (a.frames[a.currentFrame].duration) ? a.frames[a.currentFrame].duration : a.duration					
 

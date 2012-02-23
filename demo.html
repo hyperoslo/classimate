@@ -18,7 +18,7 @@
 
 			// Example for making a animation preset for using the same animation multiple times. 
 			// This loops through the frames, and the 'green' frame has a custom duraton of 100ms while the others have 1000ms
-			$().classimate('addPreset','greenfast',["blue",{class:"green",duration:100},"yellow"]);
+			$().classimate('addPreset','greenfast',["blue",{cssClass:"green",duration:100},"yellow"]);
 			
 			$("#greenfast").click(function(){
 				$(".animated").classimate('preset','greenfast'); // Call the preset stated above

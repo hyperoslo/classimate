@@ -8,7 +8,7 @@ This code would animate between the three classes with 500ms on each frame, and 
 A class can have any porperty like background image, position, color, border etc.
 
 <pre>
-$(target).classimate(['classname','classname']);	// Animates classes
+$(target).classimate(['cssClass','cssClass']);	// Animates classes
 $().classimate('pause'); 							// Pauses all animations
 $().classimate('play'); 							// Starts animations again after pause
 $().classimate('fps',25); 							// Overrides default FPS (30)
@@ -17,9 +17,9 @@ $().classimate('fps',25); 							// Overrides default FPS (30)
 
 $(target).classimate(
 		[  											// Frames array
-			"classname",							// Array content can be just a string if you have no frame-specific settings					  
-			{										// Or a object if you also want other frame-specific settings than just the classname
-				class:"classname",					// Class must be supplied with name of the frame class		
+			"cssClass",							// Array content can be just a string if you have no frame-specific settings					  
+			{										// Or a object if you also want other frame-specific settings than just the cssClass
+				cssClass:"cssClass",				// Class must be supplied with name of the frame class		
 				duration: 1000,						// Duration in ms for this frame
 				action: function(object){}			// Function to run on this frame
 			}
