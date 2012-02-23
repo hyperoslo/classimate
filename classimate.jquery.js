@@ -16,16 +16,16 @@
 $().classimate('pause'); 							// Pauses all animations
 $().classimate('play'); 							// Pauses all animations
 $().classimate('fps',25); 							// Overrides default FPS (30)
-$(target).classimate(['cssClass','cssClass']);	// Animates classes
+$(target).classimate(['class1','class2']);			// Animates classes
 
 *
 * With settings:
 
 $(target).classimate(
 		[  											// Frames array
-			"cssClass",							// Array content can be just a string if you have no frame-specific settings					  
+			"class1",								// Array content can be just a string if you have no frame-specific settings					  
 			{										// Or a object if you also want other frame-specific settings than just the cssClass
-				cssClass:"cssClass",				// Class must be supplied with name of the frame class		
+				cssClass:"class2",				// Class must be supplied with name of the frame class		
 				duration: 1000,						// Duration in ms for this frame
 				action: function(object){}			// Function to run on this frame
 			}
