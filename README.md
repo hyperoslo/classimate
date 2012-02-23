@@ -3,7 +3,7 @@
 
 This jQuery plugin lets you make frame based animation using css classes.
 Create an individual class for each frame, and initiate with ie:
-<pre>$(target).classimate([class1,class2,class2],{loop:true,rounds:3,duration:500});</pre>
+<pre>$(target).classimate(['class1','class2','class2'],{loop:true,rounds:3,duration:500});</pre>
 This code would animate between the three classes with 500ms on each frame, and stopping after 3 rounds.
 A class can have any porperty like background image, position, color, border etc.
 
